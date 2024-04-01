@@ -3,79 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registration Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<style>
-    body{
-        background-image: url(./img.img);
-        background-size: cover;
-    }
-    #div1{
-        position: absolute;
-        left: 600px;
-        bottom: 200px;
-    }
-</style>
 <body>
-    <div id="div1" style="border: 2px solid; width: 350px; height: 350px; background-color: antiquewhite; border-radius: 10%;">
-    <form>
-        <center><H4 style="margin-bottom: 25px;">REGISTRATION</H4>
-        <label for="username">Username</label>
-        <input type="text" id="inp1" style="border: 2px solid black; margin-bottom: 15px;">
-        <br><br>
-        <label for="password">Password</label>
-        <input type="text" id="inp2" style="border: 2px solid black; margin-bottom: 15px;">
-        <br><br>
-        <label for="cpassword">Conform</label>
-        <input type="text" id="inp" style="border:2px solid black" style="margin-bottom: 20px;">
-        <br><br>
-        <input type="submit" id="inp3" style="color: white; background-color: blue; width: 100px; margin-bottom: 25px;">
-        <br>
-        <input type="button" id="inp4" value="reset" style="color: white; background-color: green; width: 100px; margin-bottom: 25px;">
-    
-    </form>
-    </div>
+    <section class="vh-100 bg-image"
+        style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                        <div class="card" style="border-radius: 15px;">
+                            <div class="card-body p-5">
+                                <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+                                <form id="registration-form">
+
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="inp1" class="form-control form-control-lg"
+                                            placeholder="Username" required>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input type="password" id="inp2" class="form-control form-control-lg"
+                                            placeholder="Password" required>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input type="password" id="inp4" class="form-control form-control-lg"
+                                            placeholder="Confirm Password" required>
+                                    </div>
+
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit"
+                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                                    </div>
+
+                                    <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
+                                            class="fw-bold text-body"><u>Login here</u></a></p>
+
+                                </form>
+
+                                <!-- Skip button to navigate to login page -->
+                                <button type="button" class="btn btn-link text-muted mt-3" onclick="skipRegistration()">Skip Registration</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        let forms=document.forms
-        console.log(forms[0]);
-    
-        let arr=[];
-        forms[0].addEventListener("submit",(e)=>{
-            e.preventDefault()
-            let inputgetting1=document.getElementById("inp1")
+        // Function to skip registration and navigate to login page
+        function skipRegistration() {
+            window.location.assign("./login.html");
+        }
 
-            let username=e.target[0].value
-            let password=e.target[1].value
-            let cpassword=e.target[2].value
-            
-            
-            arr.push({username:username,password:password,cpassword:cpassword})
-            console.log(arr);
-            localStorage.setItem("cart",JSON.stringify(arr))
+        $(document).ready(function(){
+            $('#registration-form').submit(function(e){
+                e.preventDefault();
+                let username = $('#inp1').val();
+                let password = $('#inp2').val();
+                let cpassword = $('#inp4').val();
 
-            if (username[0]==username[0].toUpperCase() && username.length >=8 && username.length<=15 && password[0]==password[0].toUpperCase() && password.length>=8 && password.length<=15 && password==cpassword  ) {
-                 window.location.assign("./login.html")
-            }
-             else{
-                 alert("Please enter Valid Details")
-             }
-             e.target[0].value=""
-             e.target[1].value=""
-             e.target[2].value=""
-        })
-        
-        let inputgetting4=document.getElementById("inp4")
-        inputgetting4.addEventListener("click",()=>{
-            let inputgetting1=document.getElementById("inp1")
-            let inputgetting2=document.getElementById("inp2")
-            let inputgetting4=document.getElementById("inp")
-            // console.log(inputgetting1.value);
-            // console.log(inputgetting2.value);
-            inputgetting1.value=""
-            inputgetting2.value=""
-        })
-        
+                if (password !== cpassword) {
+                    alert("Passwords do not match. Please confirm your password.");
+                    return;
+                }
+
+               
+
+                // Example: Redirect to login page if registration successful
+                window.location.assign("./login.html");
+            });
+        });
     </script>
 </body>
 </html>

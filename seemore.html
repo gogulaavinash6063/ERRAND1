@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        img{
-            width: 200px;
-        }
-        body{
-            background-color: wheat;
-        }
+       
     </style>
 </head>
 <body>
+    <div id="cart">
+
+    </div>
 
     <script>
         let varrr=[
@@ -258,79 +256,53 @@
         }
     }
 ]
-
-
-        let value=JSON.parse(localStorage.getItem("cart"))
-
-let p=document.createElement("img")
-p.setAttribute("src",value.image)
-p.innerText=value.image
-p.style.marginLeft="600px"
-let aa=document.createElement("p")
-aa.innerText=value.id
-let bb=document.createElement("h3")
-bb.innerText=`Title : ${value["title"]}`
-bb.style.marginLeft="500px"
-let cc=document.createElement("h2")
-cc.innerText=`Price : ${value.price} /-`
-cc.style.marginLeft="630px"
-let dd=document.createElement("h4")
-dd.innerText=value.description
-dd.style.marginLeft="300px"
-let ee=document.createElement("h3")
-ee.innerText=`Category : ${value.category}`
-ee.style.marginLeft="600px"
+let value=JSON.parse(localStorage.getItem("cart"))
+let idCreated=document.createElement("p")
+idCreated.innerText=value.id
+document.body.appendChild(idCreated)
+let imagecreated=document.createElement("img")
+imagecreated.setAttribute("src",value.image)
+imagecreated.innerText=value.image
+document.body.appendChild(imagecreated)
+let titleCreated=document.createElement("h3")
+titleCreated.innerText=`Title : ${value["title"]}`
+document.body.appendChild(titleCreated)
+let pricecreated=document.createElement("h2")
+pricecreated.innerText=`Price : ${value.price} /-`
+document.body.appendChild(pricecreated)
+let descriptioncreated=document.createElement("h4")
+descriptioncreated.innerText=value.description
+document.body.appendChild(descriptioncreated)
+let categorycreated=document.createElement("h3")
+categorycreated.innerText=`Category : ${value.category}`
+document.body.appendChild(categorycreated)
 let ff=document.createElement("h2")
 ff.innerText=`Rating : ${value.rating.rate}`
-ff.style.marginLeft="650px"
+document.body.appendChild(ff)
 let gg=document.createElement("h3")
 gg.innerText=`Count : ${value.rating.count}`
-gg.style.marginLeft="670px"
-document.body.appendChild(aa)
-document.body.appendChild(p)
-document.body.appendChild(bb)
-document.body.appendChild(cc)
-document.body.appendChild(dd)
-document.body.appendChild(ee)
-document.body.appendChild(ff)
-document.body.appendChild(gg)
+// document.body.appendChild(gg)
 
 
 
-
-
-// let imgbtn=document.createElement("button")
-// imgbtn.innerText="add to cart"
-// document.body.appendChild(imgbtn)
-let imgbtn2=document.createElement("button")
-imgbtn2.innerText="add to wishlist"
-imgbtn2.style.width="100px"
-imgbtn2.style.height="30px"
-imgbtn2.style.position="center"
-imgbtn2.style.marginLeft="500px"
-imgbtn2.style.background="blue"
-imgbtn2.style.color="white"
-document.body.appendChild(imgbtn2) 
 let imgbtn1=document.createElement("button")
 imgbtn1.addEventListener("click",()=>{
     window.location.assign("./buynow.html")
     
 })
-imgbtn1.innerText="buy now"
-imgbtn1.style.width="100px"
-imgbtn1.style.height="30px"
-imgbtn1.style.background="red"
-imgbtn1.style.color="white"
-imgbtn1.style.position="center"
-imgbtn1.style.marginLeft="200px"
-imgbtn1.style.marginBottom="10px"
+imgbtn1.innerText="Buy Now"
+imgbtn1.classList.add("btn", "btn-success", "btn-lg", "mt-3", "btn-custom")
 document.body.appendChild(imgbtn1)
+
 let minus=document.createElement("button")
 minus.innerText="-"
+minus.classList.add("btn", "btn-secondary", "mr-1")
 let num=document.createElement("button")
 num.innerText="1"
+num.classList.add("btn", "btn-light", "mr-1")
 let plus=document.createElement("button")
 plus.innerText="+"
+plus.classList.add("btn", "btn-secondary")
 document.body.appendChild(minus)
 document.body.appendChild(num)
 document.body.appendChild(plus)
@@ -349,13 +321,6 @@ plus.addEventListener("click",()=>{
 
 })
 
-// imgbtn.addEventListener("click",()=>{
-//     window.location.assign("./cart.html")
-// })
-// imgbtn.addEventListener("click",()=>{
-    // let a1=localStorage.getItem("avi")
-    // localStorage.getItem("cart1",JSON.stringify(gett[ind]))
-// })
 
 
 
@@ -367,3 +332,4 @@ plus.addEventListener("click",()=>{
     
 </body>
 </html>
+  
